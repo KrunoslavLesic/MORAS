@@ -1,0 +1,17 @@
+Require Import Coq.Bool.Bool.
+
+
+Notation "x && y" := (andb x y).
+Notation "x || y" := (orb x y).
+Notation "! x" := (negb x) (at level 40).
+
+Goal forall x y : bool, (x && !y) || (!x && !y) || (!x && y) = !x || !y.
+Proof.
+intros x y. destruct x, y; reflexivity.
+Qed.
+
+Goal forall X Y Z : bool, 
+! (!X && Y && Z) && (! (X && Y && (!Z))) && (X && (!Y) && Z) = X && (!Y) && Z.
+Proof.
+intros X Y Z. destruct X, Y, Z; reflexivity.
+Qed.

@@ -1,0 +1,79 @@
+CHIP Diff{
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+
+    Xor(a = a[0], b = b[0], out = out1);
+    Xor(a = a[1], b = b[1], out = out2);
+    Xor(a = a[2], b = b[2], out = out3);
+    Xor(a = a[3], b = b[3], out = out4);
+    Xor(a = a[4], b = b[4], out = out5);
+    Xor(a = a[5], b = b[5], out = out6);
+    Xor(a = a[6], b = b[6], out = out7);
+    Xor(a = a[7], b = b[7], out = out8);
+    Xor(a = a[8], b = b[8], out = out9);
+    Xor(a = a[9], b = b[9], out = out10);
+    Xor(a = a[10], b = b[10], out = out11);
+    Xor(a = a[11], b = b[11], out = out12);
+    Xor(a = a[12], b = b[12], out = out13);
+    Xor(a = a[13], b = b[13], out = out14);
+    Xor(a = a[14], b = b[14], out = out15);
+    Xor(a = a[15], b = b[15], out = out16);
+
+    Not16(in = a, out = notA);
+    And16(a = a, b = notA, out = zero);
+
+    Or16(a = zero, b = zero, out = brojac);
+
+    Incrementor(a = brojac, out = incremented1);
+    Mux16(a = brojac, b = incremented1, sel = out1, out = noviBrojac0);
+    Incrementor(a = noviBrojac0, out = incremented2);
+
+    Mux16(a = noviBrojac0, b = incremented2, sel = out2, out = noviBrojac1);
+    Incrementor(a = noviBrojac1, out = incremented3);
+
+    Mux16(a = noviBrojac1, b = incremented3, sel = out3, out = noviBrojac2);
+    Incrementor(a = noviBrojac2, out = incremented4);
+
+    Mux16(a = noviBrojac2, b = incremented4, sel = out4, out = noviBrojac3);
+    Incrementor(a = noviBrojac3, out = incremented5);
+
+    Mux16(a = noviBrojac3, b = incremented5, sel = out5, out = noviBrojac4);
+    Incrementor(a = noviBrojac4, out = incremented6);
+
+    Mux16(a = noviBrojac4, b = incremented6, sel = out6, out = noviBrojac5);
+    Incrementor(a = noviBrojac5, out = incremented7);
+
+    Mux16(a = noviBrojac5, b = incremented7, sel = out7, out = noviBrojac6);
+    Incrementor(a = noviBrojac6, out = incremented8);
+
+    Mux16(a = noviBrojac6, b = incremented8, sel = out8, out = noviBrojac7);
+    Incrementor(a = noviBrojac7, out = incremented9);
+
+    Mux16(a = noviBrojac7, b = incremented9, sel = out9, out = noviBrojac8);
+    Incrementor(a = noviBrojac8, out = incremented10);
+
+    Mux16(a = noviBrojac8, b = incremented10, sel = out10, out = noviBrojac9);
+    Incrementor(a = noviBrojac9, out = incremented11);
+
+    Mux16(a = noviBrojac9, b = incremented11, sel = out11, out = noviBrojac10);
+    Incrementor(a = noviBrojac10, out = incremented12);
+
+    Mux16(a = noviBrojac10, b = incremented12, sel = out12, out = noviBrojac11);
+    Incrementor(a = noviBrojac11, out = incremented13);
+
+    Mux16(a = noviBrojac11, b = incremented13, sel = out13, out = noviBrojac12);
+    Incrementor(a = noviBrojac12, out = incremented14);
+
+    Mux16(a = noviBrojac12, b = incremented14, sel = out14, out = noviBrojac13);
+    Incrementor(a = noviBrojac13, out = incremented15);
+
+    Mux16(a = noviBrojac13, b = incremented15, sel = out15, out = noviBrojac14);
+    Incrementor(a = noviBrojac14, out = incremented16);
+
+    Mux16(a = noviBrojac14, b = incremented16, sel = out16, out = noviBrojac15);
+    
+    Or16(a = noviBrojac15, b = zero, out = out);
+
+}

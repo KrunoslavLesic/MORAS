@@ -1,0 +1,11 @@
+CHIP OrNot{
+    IN x, y, z;
+    OUT out;
+
+    PARTS:
+    Not(in = x, out = Notx);
+    Not(in = y, out = Noty);
+
+    Or(a = Notx, b = Noty, out = out);
+
+}
