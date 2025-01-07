@@ -1,0 +1,23 @@
+CHIP Merge16{
+    IN a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16;
+    OUT out[16];
+
+    PARTS:
+
+    And(a = a1, b = true, out = out[0]);
+    And(a = a2, b = true, out = out[1]);
+    And(a = a3, b = true, out = out[2]);
+    And(a = a4, b = true, out = out[3]);
+    And(a = a5, b = true, out = out[4]);
+    And(a = a6, b = true, out = out[5]);
+    And(a = a7, b = true, out = out[6]);
+    And(a = a8, b = true, out = out[7]);
+    And(a = a9, b = true, out = out[8]);
+    And(a = a10, b = true, out = out[9]);
+    And(a = a11, b = true, out = out[10]);
+    And(a = a12, b = true, out = out[11]);
+    And(a = a13, b = true, out = out[12]);
+    And(a = a14, b = true, out = out[13]);
+    And(a = a15, b = true, out = out[14]);
+    And(a = a16, b = true, out = out[15]);
+}

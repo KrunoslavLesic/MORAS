@@ -1,0 +1,35 @@
+CHIP IsPalindrome{
+
+    IN in[16];
+    OUT out;
+
+    PARTS:
+
+    And(a = in[15], b = true, out = out0);
+    And(a = in[14], b = true, out = out1);
+    And(a = in[13], b = true, out = out2);
+    And(a = in[12], b = true, out = out3);
+    And(a = in[11], b = true, out = out4);
+    And(a = in[10], b = true, out = out5);
+    And(a = in[9], b = true, out = out6);
+    And(a = in[8], b = true, out = out7);
+    And(a = in[7], b = true, out = out8);
+    And(a = in[6], b = true, out = out9);
+    And(a = in[5], b = true, out = out10);
+    And(a = in[4], b = true, out = out11);
+    And(a = in[3], b = true, out = out12);
+    And(a = in[2], b = true, out = out13);
+    And(a = in[1], b = true, out = out14);
+    And(a = in[0], b = true, out = out15);
+
+    Merge16(a1 = out0, a2 = out1, a3 = out2, a4 = out3, a5 = out4,
+            a6 = out5, a7 = out6, a8 = out7, a9 = out8, a10 = out9,
+            a11 = out10, a12 = out11, a13 = out12, a14 = out3, a15 = out14,
+            a16 = out15, out = b);
+
+    Diff(a = in, b = b, out = diffout);
+
+    IsAllZero(in = diffout, out = zeroout);
+
+    Mux(a = false, b = true, sel = zeroout, out = out);
+}
