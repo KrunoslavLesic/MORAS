@@ -20,24 +20,24 @@ D; JGT
 @0
 D = M
 @i 
-M = D + 1
+M = D
 @1
 D = M
 @0
 D = D - M
 @n
-M = D - 1
+M = D
 @2
 @SKOCI_1
 0;JMP
 
 (SKOCI)
 @n 
-M = D -1
+M = D
 @1
 D = M
 @i 
-M = D + 1
+M = D
 @2
 M = 0
 (SKOCI_1)
