@@ -1,5 +1,3 @@
-//  Program koji u R2 sprema sumu prirodnih brojeva izmedu pozitivnih brojeva
-//  zapisanih u R0 i R1, uključujući R0 i R1.
 
 @1
 D = M
