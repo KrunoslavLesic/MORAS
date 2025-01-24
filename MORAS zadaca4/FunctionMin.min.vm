@@ -1,0 +1,33 @@
+push constant 56      
+push constant 12      
+push constant 34      
+call FunctionMin.min 3  
+
+function FunctionMin.min 1
+push argument 0
+push argument 1
+gt
+if-goto USE_ARG1
+
+push argument 0
+pop local 0
+goto CHECK_ARG2
+
+label USE_ARG1
+push argument 1
+pop local 0      
+
+label CHECK_ARG2
+push local 0
+push argument 2
+gt
+if-goto USE_ARG2
+
+push local 0         
+goto END               
+
+label USE_ARG2
+push argument 2        
+
+label END
+return                 
