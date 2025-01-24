@@ -1,0 +1,21 @@
+function Main.main 0
+
+    push constant 0
+    call Lucas.lucas 1
+    pop temp 0
+
+    push constant 1
+    call Lucas.lucas 1
+    pop temp 1
+
+    push constant 2
+    call Lucas.lucas 1
+    pop temp 2
+
+    push constant 6
+    call Lucas.lucas 1
+    pop temp 3
+
+    push constant 0
+    return
+

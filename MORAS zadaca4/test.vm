@@ -1,0 +1,11 @@
+// Test za nedefinirane oznake
+push constant 10       // Gura broj 10 na stog
+pop local 0            // Sprema broj u local[0]
+
+goto UNDEFINED_LABEL   // Pokušaj skoka na nepostojeću oznaku
+label START_LOOP       // Definirana oznaka
+push constant 1        // Gura broj 1 na stog
+if-goto END_LOOP        // Pokušaj skoka na nepostojeću oznaku
+goto START_LOOP        // Skok na postojeću oznaku
+
+label END_LOOP         // Definirana oznaka (ispravna)
