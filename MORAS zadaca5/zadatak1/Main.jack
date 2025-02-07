@@ -1,0 +1,22 @@
+class Main{
+    function void main(){
+        var Array arr;
+        var int size, i;
+        var QuickSort sq;
+        let size = 10;
+        let arr = Array.new(size);
+
+        let i = 0;
+        while (i < size) {
+            let arr[i] = size - i;
+            let i = i + 1;
+        }
+        
+        let sq = QuickSort.new(arr, size);
+        
+        do sq.run();
+
+        do sq.Dispose();
+        return;
+    }
+}

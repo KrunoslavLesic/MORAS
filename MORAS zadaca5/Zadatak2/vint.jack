@@ -1,0 +1,146 @@
+class vint{
+    field int capacitiy;
+    field Array arr;
+
+    constructor vint new(int n){
+        var int i;
+        if(n < 0){
+            let capacitiy = 1;
+            let arr = Array.new(capacitiy);
+        }
+        if((n = 0) | (n > 0)){
+            let i = 0;
+            let capacitiy = 1;
+            while(i < n){
+                let capacitiy = Math.multiply(capacitiy, 2);
+                let i = i + 1;
+            }
+            let arr = Array.new(capacitiy);
+        }
+        return this;
+    }
+
+    method int len(){
+        return capacitiy;
+    }
+
+    method void set(int k, int v){
+        if(k < capacitiy){
+            let arr[k] = v; 
+        }
+        return;
+    }
+
+    method int get(int k){
+        if(k < capacitiy){
+            return arr[k];
+        }
+        return -1;
+    }
+
+    method void resize(int m){
+        var int min, i, k, j, capacitiy2;
+        var Array arr2;
+        let k = 1;
+        if(~(m < 0)){
+            let k = m;
+        }
+        let i = 0;
+        let j = 0;
+        let capacitiy2 = 1;
+
+        while(i < k){
+            let capacitiy2 = Math.multiply(capacitiy2, 2);
+            let i = i + 1;
+        }
+        
+        let arr2 = Array.new(capacitiy2);
+
+        let min = Math.min(capacitiy, capacitiy2);
+
+        while(j < min){
+            let arr2[j] = arr[j];
+            let j = j + 1;
+        }
+        do Memory.deAlloc(arr);
+        let arr = arr2;
+        let capacitiy = capacitiy2;
+        return;
+    }
+
+    method boolean is_eq(vint a1, vint a2){
+        var int i;
+        let i = 0;
+        if(~(a1.len() = a2.len())){
+            return false;
+        }
+        while(i < a1.len()){
+            if(~(a1[i] = a2[i])){
+                return false;
+            
+            }
+        }
+        return true;
+    }
+
+    method boolean elems(vint v1, vint v2) {
+        var Vint temp1, temp2;
+        var int i;
+
+        if (~(v1.len() = v2.len())) {
+            return false;
+        }
+
+        let temp1 = vint.new(0);
+        do temp1.resize(v1.len());
+        let temp2 = vint.new(0);
+        do temp2.resize(v2.len());
+
+        let i = 0;
+        while (i < v1.len()) {
+            do temp1.set(i, v1.get(i));
+            do temp2.set(i, v2.get(i));
+            let i = i + 1;
+        }
+
+        do temp1.sort();
+        do temp2.sort();
+
+        let i = 0;
+        while (i < temp1.len()) {
+            if (~(temp1.get(i) = temp2.get(i))) {
+                do temp1.Dispose();
+                do temp2.Dispose();
+                return false;
+            }
+            let i = i + 1;
+        }
+
+        do temp1.Dispose();
+        do temp2.Dispose();
+        return true;
+    }
+
+    method void sort() {
+        var int i, j, temp;
+        let i = 0;
+        while (i < (capacitiy - 1)) {
+            let j = 0;
+            while (j < (capacitiy - i - 1)) {
+                if (arr[j] > arr[j + 1]) {
+                    let temp = arr[j];
+                    let arr[j] = arr[j + 1];
+                    let arr[j + 1] = temp;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void Dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}

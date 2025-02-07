@@ -1,0 +1,82 @@
+class QuickSort{
+
+    field Array arr;
+    field int size;
+
+    constructor QuickSort new(Array array, int sizee){
+        var int i;
+        let size = sizee;
+        let arr = Array.new(sizee);
+        let i = 0;
+        while (i < sizee) {
+            let arr[i] = array[i];
+            let i = i + 1;
+        }
+        return this;
+    }
+
+    method void swap(Array a, int i, int j) {
+        var int temp;
+        let temp = a[i];
+        let a[i] = a[j];
+        let a[j] = temp;
+        return;
+    }
+
+    method int partition(Array a, int left, int right) {
+        var int pivot, i, j;
+        let pivot = a[right];
+        let i = left - 1;
+        let j = left;
+        while ((j < (right-1)) | (j = (right-1))) {
+            if ((a[j] < pivot) | (a[j] = pivot)) {
+                let i = i + 1;
+                do swap(a, i, j);
+            }
+            let j = j + 1;
+        }
+        do swap(a, i + 1, right);
+        return i + 1;
+    }
+
+    method void qsort(Array a, int left, int right) {
+        var int pivotIndex;
+        if (left < right) {
+            let pivotIndex = partition(a, left, right);
+            do qsort(a, left, (pivotIndex - 1));
+            do qsort(a, (pivotIndex + 1), right);
+        }
+        return;
+    }
+
+    method void sort(Array a, int size) {
+        do qsort(a, 0, size - 1);
+        return;
+    }
+
+    method void run(){
+        var int i, j;
+        let i = 0;
+        let j = 0;
+        while (i < size) {
+            do Output.printInt(arr[i]);
+            do Output.printString(" ");
+            let i = i + 1;
+        }
+
+        do sort(arr, size);
+        
+        do Output.println();
+        while (j < size) {
+            do Output.printInt(arr[j]);
+            do Output.printString(" ");
+            let j = j + 1;
+        }
+        return;
+    }
+    method void Dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

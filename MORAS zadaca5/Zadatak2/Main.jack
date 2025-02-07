@@ -1,0 +1,74 @@
+class Main {
+
+    function void main() {
+        var vint v1, v2;
+        var int i;
+
+        let v1 = vint.new(3);
+        let v2 = vint.new(-1);
+
+        do Output.printString("v1 length: ");
+        do Output.printInt(v1.len());
+        do Output.println();
+
+        do Output.printString("v2 length: ");
+        do Output.printInt(v2.len());
+        do Output.println();
+
+        do v1.set(0, 10);
+        do v1.set(1, 20);
+        do v1.set(2, 30);
+
+        do Output.printString("v1[0]: ");
+        do Output.printInt(v1.get(0));
+        do Output.println();
+
+        do Output.printString("v1[1]: ");
+        do Output.printInt(v1.get(1));
+        do Output.println();
+
+        do Output.printString("v1[2]: ");
+        do Output.printInt(v1.get(2));
+        do Output.println();
+
+        do v1.resize(2);
+
+        do Output.printString("v1 length after resize: ");
+        do Output.printInt(v1.len());
+        do Output.println();
+
+        // Testiranje metode is_eq
+        do v2.resize(4);
+        do v2.set(0, 10);
+        do v2.set(1, 20);
+        do v2.set(2, 30);
+
+        do Output.printString("Are v1 and v2 equal? ");
+        if (v1.is_eq(v1, v2)) {
+            do Output.printString("Yes");
+            do Output.println();
+        } if(~(v1.is_eq(v1, v2))) {
+            do Output.printString("No");
+            do Output.println();
+        }
+
+        // Testiranje metode elems
+        do v2.set(0, 30);
+        do v2.set(1, 10);
+        do v2.set(2, 20);
+
+        do Output.printString("Do v1 and v2 have same elements? ");
+        if (v1.elems(v1, v2)) {
+            do Output.printString("Yes");
+            do Output.println();
+        } if(~(v1.elems(v1, v2))) {
+            do Output.printString("No");
+            do Output.println();
+        }
+
+        do v1.Dispose();
+        do v2.Dispose();
+
+        return;
+    }
+} 

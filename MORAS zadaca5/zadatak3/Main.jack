@@ -1,0 +1,45 @@
+class Main {
+    function void main() {
+        var int a, b, x, y, prevX, prevY, x_screen, y_screen, prevX_screen, prevY_screen;
+
+        do Output.printString("Unesi a: ");
+        let a = Keyboard.readInt("");
+
+        do Output.printString("Unesi b: ");
+        let b = Keyboard.readInt("");
+        do Screen.clearScreen();
+
+        do Screen.drawLine(240, 0, 240, 255);
+        do Screen.drawLine(128, 128, 384, 128);
+
+        let x = -32;
+        let prevX_screen = -1;
+
+        // Petlja za crtanje funkcije f(x) = ax + b
+        while (~(x > 32)) {
+            let y = Math.multiply(a, x) + b; 
+            
+            if (~(y < -32) & (~(y > 32))) {
+                let y_screen = 128 - y;
+                let x_screen = 240 + x;
+
+                if (~(x_screen < 0) & (x_screen < 512) & (~(y_screen < 0)) & (y_screen < 256)) {
+                    do Screen.drawPixel(x_screen, y_screen);
+                    
+                    if (~(prevX_screen = -1)) {
+                        if (~(prevX_screen < 0) & (prevX_screen < 512) & (~(prevY_screen < 0)) & (prevY_screen < 256)) {
+                            do Screen.drawLine(prevX_screen, prevY_screen, x_screen, y_screen);
+                        }
+                    }
+
+                    let prevX_screen = x_screen;
+                    let prevY_screen = y_screen;
+                }
+            }
+
+            let x = x + 1;
+        }
+
+        return;
+    }
+}
